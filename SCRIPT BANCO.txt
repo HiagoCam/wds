@@ -1,0 +1,146 @@
+USE [master]
+GO
+/****** Object:  Database [estadual]    Script Date: 04/04/2020 16:53:09 ******/
+CREATE DATABASE [estadual]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'estadual', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\DATA\estadual.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'estadual_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\DATA\estadual_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+GO
+ALTER DATABASE [estadual] SET COMPATIBILITY_LEVEL = 140
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [estadual].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [estadual] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [estadual] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [estadual] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [estadual] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [estadual] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [estadual] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [estadual] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [estadual] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [estadual] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [estadual] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [estadual] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [estadual] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [estadual] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [estadual] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [estadual] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [estadual] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [estadual] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [estadual] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [estadual] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [estadual] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [estadual] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [estadual] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [estadual] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [estadual] SET  MULTI_USER 
+GO
+ALTER DATABASE [estadual] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [estadual] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [estadual] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [estadual] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [estadual] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [estadual] SET QUERY_STORE = OFF
+GO
+USE [estadual]
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET IDENTITY_CACHE = ON;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET LEGACY_CARDINALITY_ESTIMATION = OFF;
+GO
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET LEGACY_CARDINALITY_ESTIMATION = PRIMARY;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET MAXDOP = 0;
+GO
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET MAXDOP = PRIMARY;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET PARAMETER_SNIFFING = ON;
+GO
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET PARAMETER_SNIFFING = PRIMARY;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET QUERY_OPTIMIZER_HOTFIXES = OFF;
+GO
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET QUERY_OPTIMIZER_HOTFIXES = PRIMARY;
+GO
+USE [estadual]
+GO
+/****** Object:  Table [dbo].[representante]    Script Date: 04/04/2020 16:53:09 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[representante](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nome] [varchar](50) NOT NULL,
+	[dataNascimento] [varchar](250) NOT NULL,
+	[telefone] [varchar](250) NULL,
+	[celular] [varchar](250) NOT NULL,
+	[email] [varchar](250) NOT NULL,
+	[senha] [varchar](250) NOT NULL,
+	[cep] [varchar](250) NOT NULL,
+	[pais] [varchar](250) NOT NULL,
+	[estado] [varchar](250) NOT NULL,
+	[cidade] [varchar](250) NOT NULL,
+	[bairro] [varchar](250) NOT NULL,
+	[endereco] [varchar](250) NOT NULL,
+	[imagem] [varchar](250) NOT NULL,
+	[status] [bit] NOT NULL,
+ CONSTRAINT [PK_representante] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[representante] ON 
+GO
+INSERT [dbo].[representante] ([id], [nome], [dataNascimento], [telefone], [celular], [email], [senha], [cep], [pais], [estado], [cidade], [bairro], [endereco], [imagem], [status]) VALUES (1, N'Jean Carlo Galliani', N'08/05/1997', NULL, N'(47) 98863-4836', N'galliani.jean@gmail.com', N'A2FACA5F819B9B2778E78ABB889671ED', N'89254-292', N'Brasil', N'SC', N'4546', N'Rau', N'Rua Prefeito José Bauer', N'C:\Users\Hiago Campregher\Desktop\project\Project\IMAGEM\Representante (1).jpg', 1)
+GO
+INSERT [dbo].[representante] ([id], [nome], [dataNascimento], [telefone], [celular], [email], [senha], [cep], [pais], [estado], [cidade], [bairro], [endereco], [imagem], [status]) VALUES (2, N'Augusto Cesar de Assis', N'23/09/1998', NULL, N'(47) 99614-3273', N'augusto.cesar.de.assis@gmail.com', N'8D34C792653E1A30030BAEC92BF6DB3C', N'89252-720', N'Brasil', N'SC', N'4546', N'Vila Lenzi', N'Rua Marculino Martim', N'C:\Users\Hiago Campregher\Desktop\project\Project\IMAGEM\Representante (2).jpg', 1)
+GO
+INSERT [dbo].[representante] ([id], [nome], [dataNascimento], [telefone], [celular], [email], [senha], [cep], [pais], [estado], [cidade], [bairro], [endereco], [imagem], [status]) VALUES (3, N'Elton João Zierhut', N'24/05/1987', NULL, N'(47) 99153-7170', N'elton.zierhut@gmail.com', N'8C430BBE27BBCDA7DAFAA8ECD046B423', N'89259-620', N'Brasil', N'SC', N'4546', N'Rio Molha', N'Rua Ângelo Menel', N'C:\Users\Hiago Campregher\Desktop\project\Project\IMAGEM\Representante (3).jpg', 1)
+GO
+INSERT [dbo].[representante] ([id], [nome], [dataNascimento], [telefone], [celular], [email], [senha], [cep], [pais], [estado], [cidade], [bairro], [endereco], [imagem], [status]) VALUES (4, N'William Robson Chenta', N'01/01/1900', NULL, N'(47) 0000-0000', N'william.chenta@edu.sc.senai.br', N'8A31FC89653C9F20D371BEC97430D477', N'00000-000', N'Brasil', N'SC', N'4549', N'Não especificado', N'Não especificado
+', N'C:\Users\Hiago Campregher\Desktop\project\Project\IMAGEM\Representante (4).jpg', 0)
+GO
+INSERT [dbo].[representante] ([id], [nome], [dataNascimento], [telefone], [celular], [email], [senha], [cep], [pais], [estado], [cidade], [bairro], [endereco], [imagem], [status]) VALUES (5, N'Gabriel Panca Ribeiro', N'01/01/1900', N'', N'4700000000', N'pancabiel@gmail.com', N'647431B5CA55B04FDF3C2FCE31EF1915', N'22222222', N'Brasil', N'Virginia ', N'Blumenau', N'Não especificado', N'Não especificado
+', N'C:\Users\Hiago Campregher\Desktop\project\Project\IMAGEM\Representante (5).jpg', 1)
+GO
+SET IDENTITY_INSERT [dbo].[representante] OFF
+GO
+USE [master]
+GO
+ALTER DATABASE [estadual] SET  READ_WRITE 
+GO
